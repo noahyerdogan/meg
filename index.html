@@ -7,68 +7,95 @@
 
   <style>
     body {
+      margin: 0;
+      min-height: 100vh;
       font-family: Arial, sans-serif;
-      background: #ffe6ee;
-      text-align: center;
-      padding: 60px 20px;
+      background: #ffe6ee; /* pink background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      color: #111;
     }
 
     .card {
-      background: white;
-      max-width: 500px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 20px;
+      background: #fff;
+      width: min(560px, 100%);
+      padding: 28px 24px;
+      border-radius: 18px;
       box-shadow: 0 20px 40px rgba(0,0,0,.12);
+      text-align: center;
     }
+
+    h1 { margin: 0 0 10px; color: #ff2d6f; }
+    p { margin: 0 0 16px; }
 
     .sky {
       position: relative;
       width: 100%;
-      height: 120px;
-      margin: 30px 0;
+      height: 110px;
+      margin: 18px 0 18px;
       background: linear-gradient(#cce7ff, #eaf6ff);
       border-radius: 14px;
       overflow: hidden;
+      border: 1px solid rgba(0,0,0,.06);
     }
 
     #plane {
       position: absolute;
-      left: -40px;
+      left: 10px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 32px;
-      transition: transform 3s ease-in-out;
+      font-size: 34px;
+      transition: left 3s ease-in-out;
     }
 
+    /* When flying, we move the plane's LEFT position */
     #plane.fly {
-      transform: translate(90vw, -50%);
+      left: calc(100% - 60px);
     }
 
     .australia {
       position: absolute;
-      right: 10px;
+      right: 12px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 32px;
+      font-size: 34px;
     }
 
     button {
-      padding: 12px 22px;
+      padding: 12px 18px;
       font-size: 16px;
-      border-radius: 999px;
       border: none;
+      border-radius: 999px;
       background: #ff2d6f;
       color: white;
       cursor: pointer;
     }
 
-    button:hover {
-      opacity: 0.9;
-    }
+    button:disabled { opacity: 0.7; cursor: default; }
   </style>
 </head>
 
 <body>
+  <div class="card">
+    <h1>Distance is temporary ❤️</h1>
+    <p>Click the button.</p>
 
-  <div class="ca
+    <div class="sky">
+      <div id="plane" aria-label="plane">✈️</div>
+      <div class="australia" aria-label="australia">🇦🇺</div>
+    </div>
+
+    <button id="btn">Get me here</button>
+  </div>
+
+  <script>
+    // Attach click handler safely (no inline onclick needed)
+    document.getElementById("btn").addEventListener("click", () => {
+      document.getElementById("plane").classList.add("fly");
+      document.getElementById("btn").disabled = true;
+    });
+  </script>
+</body>
+</html>
