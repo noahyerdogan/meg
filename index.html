@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Valentine ✈️</title>
 
+  <!-- Bubbly font -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
@@ -20,103 +21,327 @@
       color:#111;
     }
 
+    /* Floating photos */
+    .floaters{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+    }
+    .floater{
+      position:absolute;
+      width:140px;
+      height:180px;
+      object-fit:cover;
+      border-radius:18px;
+      box-shadow:0 18px 50px rgba(0,0,0,.18);
+      opacity:.28;
+      animation: drift 8s ease-in-out infinite;
+    }
+    .f1{ left:24px; top:80px; }
+    .f2{ left:60px; bottom:70px; animation-duration:9s; }
+    .f3{ left:18px; top:48%; animation-duration:7.5s; }
+    .f4{ right:24px; top:90px; }
+    .f5{ right:60px; bottom:80px; animation-duration:9.5s; }
+    .f6{ right:18px; top:52%; animation-duration:7.8s; }
+
+    @keyframes drift{
+      0%{ transform:translateY(0) rotate(-4deg); }
+      50%{ transform:translateY(-18px) rotate(4deg); }
+      100%{ transform:translateY(0) rotate(-4deg); }
+    }
+
     .card{
+      position:relative;
+      z-index:2;
       background:#fff;
-      width:min(680px, 100%);
+      width:min(720px,100%);
       padding:34px 28px;
       border-radius:22px;
-      box-shadow:0 20px 50px rgba(0,0,0,0.14);
+      box-shadow:0 20px 50px rgba(0,0,0,.14);
       text-align:center;
     }
 
     .valentine-title{
-      font-family:'Pacifico', cursive;
-      font-size:clamp(30px, 4.8vw, 52px);
+      font-family:'Pacifico',cursive;
+      font-size:clamp(30px,4.8vw,52px);
       color:#ff2d6f;
-      margin:0 0 20px;
+      margin:0 0 14px;
       line-height:1.25;
-      text-shadow:0 4px 10px rgba(255,45,111,0.22);
+      text-shadow:0 4px 10px rgba(255,45,111,.25);
     }
 
-    .sub{
-      margin:0 0 18px;
-      font-size:16px;
-      opacity:0.85;
-    }
+    .sub{ margin:0 0 18px; opacity:.85; }
 
     .sky{
       position:relative;
       width:100%;
-      height:160px;
-      margin:16px 0 22px;
-      background:linear-gradient(#cce7ff, #eaf6ff);
+      height:170px;
+      margin:14px 0 16px;
+      background:linear-gradient(#cce7ff,#eaf6ff);
       border-radius:16px;
       overflow:hidden;
-      border:1px solid rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,.06);
     }
 
     .flag{
       position:absolute;
       bottom:14px;
       font-size:34px;
-      line-height:1;
     }
-
     .flag.de{ left:14px; }
     .flag.au{ right:14px; }
 
     #plane{
       position:absolute;
-      left:64px;      /* near 🇩🇪 */
-      top:86px;
+      left:64px;
+      top:96px;
       font-size:34px;
-      line-height:1;
-      transition:left 4s ease-in-out, top 4s ease-in-out;
       z-index:2;
+      user-select:none;
     }
 
-    /* End above 🇦🇺 */
-    #plane.fly{
-      left:calc(100% - 14px - 34px - 14px); /* right padding - plane width-ish - offset */
-      top:28px;
+    .progress-wrap{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      justify-content:center;
+      margin:8px 0 18px;
+      font-size:14px;
+      opacity:.85;
+    }
+    .bar{
+      width:min(420px,100%);
+      height:10px;
+      border-radius:999px;
+      background:rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+    .bar>div{
+      height:100%;
+      width:0%;
+      background:#ff2d6f;
+      border-radius:999px;
     }
 
-    button{
-      padding:12px 22px;
+    .hold-btn{
+      padding:14px 20px;
       font-size:16px;
       border-radius:999px;
       border:none;
       background:#ff2d6f;
       color:white;
       cursor:pointer;
+      width:min(360px,100%);
+      touch-action:none;
     }
-    button:disabled{ opacity:0.7; cursor:default; }
+    .hold-btn:disabled{ opacity:.7; cursor:default; }
+
+    /* Confetti */
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      display:none;
+      z-index:9999;
+    }
+    .confetti.show{ display:block; }
+    .confetti span{
+      position:absolute;
+      top:-20px;
+      width:10px;
+      height:16px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall{
+      to{ transform:translateY(110vh) rotate(540deg); }
+    }
+
+    /* Gallery modal */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:10000;
+    }
+    .modal.show{ display:flex; }
+
+    .modal-card{
+      background:#fff;
+      width:min(900px,100%);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .modal-title{
+      font-family:'Pacifico',cursive;
+      color:#ff2d6f;
+      margin:0 0 12px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .grid img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      border-radius:12px;
+    }
+
+    @media(max-width:700px){
+      .grid{ grid-template-columns:repeat(2,1fr); }
+      .floater{ width:100px; height:130px; }
+      .f2,.f5{ display:none; }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Floating background photos -->
+  <div class="floaters" id="floaters">
+    <img class="floater f1" src="ff1.jpg">
+    <img class="floater f2" src="ff2.jpg">
+    <img class="floater f3" src="ff3.jpg">
+    <img class="floater f4" src="ff4.jpg">
+    <img class="floater f5" src="ff5.jpg">
+    <img class="floater f6" src="ff6.jpg">
+  </div>
+
   <div class="card">
     <h1 class="valentine-title">
       Happy Valentine’s Day my princess,<br>
       I love you infinity 💕
     </h1>
 
-    <p class="sub">Click the button ✈️</p>
+    <p class="sub">Hold the button to fly from 🇩🇪 to 🇦🇺</p>
 
-    <div class="sky">
+    <div class="sky" id="sky">
       <div class="flag de">🇩🇪</div>
       <div id="plane">✈️</div>
-      <div class="flag au">🇦🇺</div>
+      <div class="flag au" id="auFlag">🇦🇺</div>
     </div>
 
-    <button id="btn">Get me here</button>
+    <div class="progress-wrap">
+      <div class="bar"><div id="barFill"></div></div>
+      <span id="pct">0%</span>
+    </div>
+
+    <button class="hold-btn" id="holdBtn">Will you be my Valentine? 💘</button>
+  </div>
+
+  <div class="confetti" id="confetti"></div>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <h2 class="modal-title">Us 💞</h2>
+      <div class="grid">
+        <img src="us1.jpg">
+        <img src="us2.jpg">
+        <img src="us3.jpg">
+        <img src="us4.jpg">
+        <img src="us5.jpg">
+        <img src="us6.jpg">
+      </div>
+    </div>
   </div>
 
   <script>
-    document.getElementById("btn").addEventListener("click", function () {
-      document.getElementById("plane").classList.add("fly");
-      this.disabled = true;
-    });
+    const plane = document.getElementById("plane");
+    const sky = document.getElementById("sky");
+    const au = document.getElementById("auFlag");
+    const btn = document.getElementById("holdBtn");
+    const bar = document.getElementById("barFill");
+    const pct = document.getElementById("pct");
+    const confetti = document.getElementById("confetti");
+    const modal = document.getElementById("modal");
+    const floaters = document.getElementById("floaters");
+
+    let holding=false, finished=false, raf;
+    const speed=220, start=64;
+    let end=0;
+
+    function calcEnd(){
+      const s=sky.getBoundingClientRect(), a=au.getBoundingClientRect();
+      end=(a.left-s.left)+a.width/2-12;
+    }
+
+    function update(){
+      const left=parseFloat(plane.style.left||start);
+      const p=Math.min(1,(left-start)/(end-start));
+      bar.style.width=(p*100)+"%";
+      pct.textContent=Math.round(p*100)+"%";
+      return p;
+    }
+
+    function loop(t){
+      if(!holding||finished) return;
+      loop.last??=t;
+      const dt=(t-loop.last)/1000;
+      loop.last=t;
+      const left=parseFloat(plane.style.left||start)+speed*dt;
+      if(left>=end){ finish(); return; }
+      plane.style.left=left+"px";
+      update();
+      raf=requestAnimationFrame(loop);
+    }
+
+    function startHold(){
+      if(finished) return;
+      holding=true;
+      loop.last=null;
+      raf=requestAnimationFrame(loop);
+    }
+
+    function stopHold(){
+      holding=false;
+      cancelAnimationFrame(raf);
+    }
+
+    function finish(){
+      finished=true;
+      holding=false;
+      plane.style.left=end+"px";
+      update();
+      btn.textContent="YES 💖";
+      btn.disabled=true;
+      floaters.style.display="none";
+      burst();
+      setTimeout(()=>modal.classList.add("show"),900);
+    }
+
+    function burst(){
+      confetti.classList.add("show");
+      confetti.innerHTML="";
+      for(let i=0;i<120;i++){
+        const s=document.createElement("span");
+        s.style.left=Math.random()*innerWidth+"px";
+        s.style.background=`hsl(${Math.random()*360} 90% 60%)`;
+        s.style.animationDuration=1.8+Math.random()*1.5+"s";
+        confetti.appendChild(s);
+      }
+      setTimeout(()=>confetti.classList.remove("show"),2600);
+    }
+
+    btn.addEventListener("mousedown",startHold);
+    btn.addEventListener("mouseup",stopHold);
+    btn.addEventListener("mouseleave",stopHold);
+    btn.addEventListener("touchstart",e=>{e.preventDefault();startHold();},{passive:false});
+    btn.addEventListener("touchend",stopHold);
+
+    window.addEventListener("resize",calcEnd);
+
+    calcEnd();
+    plane.style.left=start+"px";
+    update();
   </script>
+
 </body>
 </html>
