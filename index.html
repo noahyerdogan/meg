@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Get me here ✈️</title>
+
+  <!-- Bubbly Valentine font -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
@@ -11,7 +13,7 @@
       margin: 0;
       min-height: 100vh;
       font-family: Arial, sans-serif;
-      background: #ffe6ee; /* pink background */
+      background: #ffe6ee;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -19,56 +21,56 @@
       color: #111;
     }
 
-  .card {
-      <h1 class="valentine-title">
-        Happy Valentine’s Day my princess,<br>
-        I love you infinity 💕
-      </h1>
-
+    .card {
       background: #fff;
-      width: min(560px, 100%);
-      padding: 28px 24px;
-      border-radius: 18px;
-      box-shadow: 0 20px 40px rgba(0,0,0,.12);
+      width: min(600px, 100%);
+      padding: 32px 28px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
       text-align: center;
     }
 
-    h1 { margin: 0 0 10px; color: #ff2d6f; }
-    p { margin: 0 0 16px; }
-
+    /* Valentine heading */
     .valentine-title {
       font-family: 'Pacifico', cursive;
       font-size: clamp(32px, 5vw, 48px);
       color: #ff2d6f;
-      margin-bottom: 20px;
-      line-height: 1.2;
+      margin-bottom: 24px;
+      line-height: 1.25;
       text-shadow: 0 4px 10px rgba(255,45,111,0.25);
     }
 
-    
+    /* Sky animation area */
     .sky {
       position: relative;
       width: 100%;
       height: 140px;
-      margin: 24px 0 20px;
+      margin: 24px 0 28px;
       background: linear-gradient(#cce7ff, #eaf6ff);
       border-radius: 14px;
       overflow: hidden;
-  
     }
 
-    .flag.germany {
+    /* Flags */
+    .flag {
+      position: absolute;
+      bottom: 14px;
+      font-size: 34px;
+    }
+
+    .flag.de {
       left: 14px;
     }
 
-    .flag.australia {
+    .flag.au {
       right: 14px;
     }
 
+    /* Plane */
     #plane {
       position: absolute;
-      left: 60px;              /* start near 🇩🇪 */
-      top: 40px;
+      left: 60px;          /* start near 🇩🇪 */
+      top: 60px;
       font-size: 34px;
       transition: left 4s ease-in-out, top 4s ease-in-out;
     }
@@ -76,44 +78,87 @@
     /* Final position: above 🇦🇺 */
     #plane.fly {
       left: calc(100% - 80px);
-      top: 10px;
+      top: 16px;
     }
 
-
+    /* Button */
     button {
-      padding: 12px 18px;
+      padding: 12px 22px;
       font-size: 16px;
-      border: none;
       border-radius: 999px;
+      border: none;
       background: #ff2d6f;
       color: white;
       cursor: pointer;
     }
 
-    button:disabled { opacity: 0.7; cursor: default; }
+    button:disabled {
+      opacity: 0.7;
+      cursor: default;
+    }
   </style>
 </head>
 
 <body>
+
   <div class="card">
-    <h1>Distance is temporary ❤️</h1>
-    <p>Click the button.</p>
+
+    <h1 class="valentine-title">
+      Happy Valentine’s Day my princess,<br>
+      I love you infinity 💕
+    </h1>
 
     <div class="sky">
-      <div class="flag germany">🇩🇪</div>
+      <div class="flag de">🇩🇪</div>
       <div id="plane">✈️</div>
-      <div class="flag australia">🇦🇺</div>
+      <div class="flag au">🇦🇺</div>
     </div>
 
     <button id="btn">Get me here</button>
+
   </div>
 
   <script>
-    // Attach click handler safely (no inline onclick needed)
-    document.getElementById("btn").addEventListener("click", () => {
+    document.getElementById("btn").addEventListener("click", function () {
       document.getElementById("plane").classList.add("fly");
-      document.getElementById("btn").disabled = true;
+      this.disabled = true;
     });
   </script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
