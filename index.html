@@ -3,110 +3,105 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Get me here ✈️</title>
+  <title>Valentine ✈️</title>
 
-  <!-- Bubbly Valentine font -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
+    body{
+      margin:0;
+      min-height:100vh;
       font-family: Arial, sans-serif;
-      background: #ffe6ee;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 16px;
-      color: #111;
+      background:#ffe6ee;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 16px;
+      color:#111;
     }
 
-    .card {
-      background: #fff;
-      width: min(600px, 100%);
-      padding: 32px 28px;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-      text-align: center;
+    .card{
+      background:#fff;
+      width:min(680px, 100%);
+      padding:34px 28px;
+      border-radius:22px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.14);
+      text-align:center;
     }
 
-    /* Valentine heading */
-    .valentine-title {
-      font-family: 'Pacifico', cursive;
-      font-size: clamp(32px, 5vw, 48px);
-      color: #ff2d6f;
-      margin-bottom: 24px;
-      line-height: 1.25;
-      text-shadow: 0 4px 10px rgba(255,45,111,0.25);
+    .valentine-title{
+      font-family:'Pacifico', cursive;
+      font-size:clamp(30px, 4.8vw, 52px);
+      color:#ff2d6f;
+      margin:0 0 20px;
+      line-height:1.25;
+      text-shadow:0 4px 10px rgba(255,45,111,0.22);
     }
 
-    /* Sky animation area */
-    .sky {
-      position: relative;
-      width: 100%;
-      height: 140px;
-      margin: 24px 0 28px;
-      background: linear-gradient(#cce7ff, #eaf6ff);
-      border-radius: 14px;
-      overflow: hidden;
+    .sub{
+      margin:0 0 18px;
+      font-size:16px;
+      opacity:0.85;
     }
 
-    /* Flags */
-    .flag {
-      position: absolute;
-      bottom: 14px;
-      font-size: 34px;
+    .sky{
+      position:relative;
+      width:100%;
+      height:160px;
+      margin:16px 0 22px;
+      background:linear-gradient(#cce7ff, #eaf6ff);
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,0.06);
     }
 
-    .flag.de {
-      left: 14px;
+    .flag{
+      position:absolute;
+      bottom:14px;
+      font-size:34px;
+      line-height:1;
     }
 
-    .flag.au {
-      right: 14px;
+    .flag.de{ left:14px; }
+    .flag.au{ right:14px; }
+
+    #plane{
+      position:absolute;
+      left:64px;      /* near 🇩🇪 */
+      top:86px;
+      font-size:34px;
+      line-height:1;
+      transition:left 4s ease-in-out, top 4s ease-in-out;
+      z-index:2;
     }
 
-    /* Plane */
-    #plane {
-      position: absolute;
-      left: 60px;          /* start near 🇩🇪 */
-      top: 60px;
-      font-size: 34px;
-      transition: left 4s ease-in-out, top 4s ease-in-out;
+    /* End above 🇦🇺 */
+    #plane.fly{
+      left:calc(100% - 14px - 34px - 14px); /* right padding - plane width-ish - offset */
+      top:28px;
     }
 
-    /* Final position: above 🇦🇺 */
-    #plane.fly {
-      left: calc(100% - 80px);
-      top: 16px;
+    button{
+      padding:12px 22px;
+      font-size:16px;
+      border-radius:999px;
+      border:none;
+      background:#ff2d6f;
+      color:white;
+      cursor:pointer;
     }
-
-    /* Button */
-    button {
-      padding: 12px 22px;
-      font-size: 16px;
-      border-radius: 999px;
-      border: none;
-      background: #ff2d6f;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: 0.7;
-      cursor: default;
-    }
+    button:disabled{ opacity:0.7; cursor:default; }
   </style>
 </head>
 
 <body>
-
   <div class="card">
-
     <h1 class="valentine-title">
       Happy Valentine’s Day my princess,<br>
       I love you infinity 💕
     </h1>
+
+    <p class="sub">Click the button ✈️</p>
 
     <div class="sky">
       <div class="flag de">🇩🇪</div>
@@ -115,7 +110,6 @@
     </div>
 
     <button id="btn">Get me here</button>
-
   </div>
 
   <script>
@@ -124,41 +118,5 @@
       this.disabled = true;
     });
   </script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
