@@ -1,34 +1,74 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy Valentine’s Day ❤️</title>
+  <title>Get me here ✈️</title>
+
   <style>
-    body { font-family: Arial, sans-serif; background:#ffe6ee; text-align:center; padding:80px 16px; }
-      <section>
-       <div class="card">
-        <h2>Distance is temporary ✈️</h2>
-        <p>Click the button and make it happen.</p>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffe6ee;
+      text-align: center;
+      padding: 60px 20px;
+    }
 
-        <div class="sky">
-        <div id="plane">✈️</div>
-      <div class="australia">🇦🇺</div>
-    </div>
+    .card {
+      background: white;
+      max-width: 500px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.12);
+    }
 
-    <button onclick="flyPlane()">Get me here</button>
-  </div>
-</section>
+    .sky {
+      position: relative;
+      width: 100%;
+      height: 120px;
+      margin: 30px 0;
+      background: linear-gradient(#cce7ff, #eaf6ff);
+      border-radius: 14px;
+      overflow: hidden;
+    }
 
-    h1 { color:#ff2d6f; font-size:40px; }
-    p { font-size:18px; max-width:520px; margin:16px auto; }
-    .card { background:white; display:inline-block; padding:28px 22px; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.12); }
+    #plane {
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 32px;
+      transition: transform 3s ease-in-out;
+    }
+
+    #plane.fly {
+      transform: translate(90vw, -50%);
+    }
+
+    .australia {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 32px;
+    }
+
+    button {
+      padding: 12px 22px;
+      font-size: 16px;
+      border-radius: 999px;
+      border: none;
+      background: #ff2d6f;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
   </style>
 </head>
+
 <body>
-  <div class="card">
-    <h1>Happy Valentine’s Day, my princess ❤️</h1>
-    <p>I’m really grateful for you. This little site is just to say: I love you.</p>
-  </div>
-</body>
-</html>
+
+  <div class="ca
