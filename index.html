@@ -29,30 +29,45 @@
 
     h1 { margin: 0 0 10px; color: #ff2d6f; }
     p { margin: 0 0 16px; }
-
+    
     .sky {
       position: relative;
       width: 100%;
-      height: 110px;
-      margin: 18px 0 18px;
+      height: 140px;
+      margin: 24px 0 20px;
       background: linear-gradient(#cce7ff, #eaf6ff);
       border-radius: 14px;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,.06);
+    }
+
+    .flag {
+      position: absolute;
+      bottom: 14px;
+      font-size: 34px;
+    }
+
+    .flag.germany {
+      left: 14px;
+    }
+
+    .flag.australia {
+      right: 14px;
     }
 
     #plane {
       position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
+      left: 60px;              /* start near 🇩🇪 */
+      top: 40px;
       font-size: 34px;
-      transition: left 3s ease-in-out;
+      transition: left 4s ease-in-out, top 4s ease-in-out;
     }
 
-    /* When flying, we move the plane's LEFT position */
+    /* Final position: above 🇦🇺 */
     #plane.fly {
-      left: calc(100% - 60px);
+      left: calc(100% - 80px);
+      top: 10px;
+    }
+
     }
 
     .australia {
@@ -83,8 +98,9 @@
     <p>Click the button.</p>
 
     <div class="sky">
-      <div id="plane" aria-label="plane">✈️</div>
-      <div class="australia" aria-label="australia">🇦🇺</div>
+      <div class="flag germany">🇩🇪</div>
+      <div id="plane">✈️</div>
+      <div class="flag australia">🇦🇺</div>
     </div>
 
     <button id="btn">Get me here</button>
